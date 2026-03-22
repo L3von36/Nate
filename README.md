@@ -1,16 +1,106 @@
-# React + Vite
+# Terraline Consulting Engineers
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A pixel-faithful clone of [narrative-navi-nook.lovable.app](https://narrative-navi-nook.lovable.app/) — the website of **Terraline Consulting Engineers**, an Ethiopia-based firm specializing in highway design, transport infrastructure, and geotechnical engineering.
 
-Currently, two official plugins are available:
+**Live site:** https://l3von36.github.io/Nate/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React 18** + **Vite 8** — fast dev server and optimized builds
+- **Tailwind CSS 3** — utility-first styling
+- **React Router v6** — client-side routing
+- **Lucide React** — icon library
 
-## Expanding the ESLint configuration
+## Pages
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+| Route | Description |
+|-------|-------------|
+| `/` | Home — hero, services overview, client types, partnership models |
+| `/about` | About — mission/vision, company overview, founders |
+| `/services` | Services — full breakdown of 6 service categories |
+| `/contact` | Contact — contact form and office information |
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18 or later
+- npm
+
+### Install & run locally
+
+```bash
+# Install dependencies
+npm install
+
+# Start dev server (http://localhost:5173)
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build locally
+npm run preview
+```
+
+---
+
+## Deploy to GitHub Pages
+
+This repo ships with a GitHub Actions workflow that automatically builds and deploys the site to GitHub Pages on every push to `main`.
+
+### One-time GitHub setup
+
+1. Go to your repo on GitHub → **Settings** → **Pages**
+2. Under **Build and deployment**, set **Source** to **GitHub Actions**
+3. Push to `main` — the workflow runs automatically
+
+The live URL will be:
+```
+https://<your-github-username>.github.io/Nate/
+```
+
+### Workflow file
+
+Located at `.github/workflows/deploy.yml`. It:
+1. Checks out the code
+2. Sets up Node 20 with npm cache
+3. Runs `npm ci` and `npm run build`
+4. Uploads the `dist/` folder as a Pages artifact
+5. Deploys to GitHub Pages
+
+### Manual trigger
+
+You can also trigger a deployment manually from **Actions → Deploy to GitHub Pages → Run workflow**.
+
+---
+
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── Navbar.jsx       # Sticky nav with mobile menu
+│   └── Footer.jsx       # Footer with links and contact info
+├── pages/
+│   ├── Home.jsx         # Landing page
+│   ├── About.jsx        # Company overview + founders
+│   ├── Services.jsx     # Service categories
+│   ├── Contact.jsx      # Contact form + info
+│   └── NotFound.jsx     # 404 page
+├── App.jsx              # Router setup
+├── main.jsx             # Entry point
+└── index.css            # Tailwind + global styles
+```
+
+## Design Tokens
+
+| Token | Value |
+|-------|-------|
+| Primary | `hsl(215, 55%, 20%)` — dark navy |
+| Accent | `hsl(38, 80%, 55%)` — amber/gold |
+| Background | `hsl(210, 20%, 98%)` — near-white |
+| Heading font | Playfair Display (serif) |
+| Body font | Source Sans 3 (sans-serif) |
