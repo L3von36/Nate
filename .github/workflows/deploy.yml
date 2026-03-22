@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - claude/clone-narrative-navi-nook-c12NR
   workflow_dispatch:
 
 permissions:
