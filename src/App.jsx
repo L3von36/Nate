@@ -9,7 +9,7 @@ import NotFound from './pages/NotFound'
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/Nate/">
       <div className="min-h-screen flex flex-col">
         <Navbar />
         <main className="flex-1">

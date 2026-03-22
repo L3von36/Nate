@@ -6,9 +6,26 @@ const navLinks = [
   { to: '/', label: 'Home' },
   { to: '/about', label: 'About' },
   { to: '/services', label: 'Services' },
-  { to: '/#team', label: 'Team' },
+  { to: null, label: 'Team', hash: 'team' },
   { to: '/contact', label: 'Contact' },
 ]
+
+function TeamLink({ className, onClick }) {
+  return (
+    <a
+      href="#team"
+      className={className}
+      onClick={(e) => {
+        e.preventDefault()
+        const el = document.getElementById('team')
+        if (el) el.scrollIntoView({ behavior: 'smooth' })
+        if (onClick) onClick()
+      }}
+    >
+      Team
+    </a>
+  )
+}
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
@@ -28,22 +45,32 @@ export default function Navbar() {
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map(({ to, label }) => (
-            <NavLink
-              key={to}
-              to={to}
-              end={to === '/'}
-              className={({ isActive }) =>
-                `text-sm font-medium tracking-wide transition-colors duration-200 ${
-                  isActive
-                    ? 'text-accent'
-                    : 'text-primary-foreground/80 hover:text-primary-foreground'
-                }`
-              }
-            >
-              {label}
-            </NavLink>
-          ))}
+          {navLinks.map(({ to, label, hash }) => {
+            if (hash) {
+              return (
+                <TeamLink
+                  key={label}
+                  className="text-sm font-medium tracking-wide transition-colors duration-200 text-primary-foreground/80 hover:text-primary-foreground"
+                />
+              )
+            }
+            return (
+              <NavLink
+                key={to}
+                to={to}
+                end={to === '/'}
+                className={({ isActive }) =>
+                  `text-sm font-medium tracking-wide transition-colors duration-200 ${
+                    isActive
+                      ? 'text-accent'
+                      : 'text-primary-foreground/80 hover:text-primary-foreground'
+                  }`
+                }
+              >
+                {label}
+              </NavLink>
+            )
+          })}
           <Link
             to="/contact"
             className="bg-accent text-accent-foreground px-4 py-2 rounded text-sm font-semibold hover:opacity-90 transition-opacity"
@@ -65,19 +92,30 @@ export default function Navbar() {
       {/* Mobile menu */}
       {open && (
         <div className="md:hidden bg-primary border-t border-primary-foreground/10 px-6 py-4 flex flex-col gap-4">
-          {navLinks.map(({ to, label }) => (
-            <NavLink
-              key={to}
-              to={to}
-              end={to === '/'}
-              className={({ isActive }) =>
-                `text-sm font-medium ${isActive ? 'text-accent' : 'text-primary-foreground/80'}`
-              }
-              onClick={() => setOpen(false)}
-            >
-              {label}
-            </NavLink>
-          ))}
+          {navLinks.map(({ to, label, hash }) => {
+            if (hash) {
+              return (
+                <TeamLink
+                  key={label}
+                  className="text-sm font-medium text-primary-foreground/80"
+                  onClick={() => setOpen(false)}
+                />
+              )
+            }
+            return (
+              <NavLink
+                key={to}
+                to={to}
+                end={to === '/'}
+                className={({ isActive }) =>
+                  `text-sm font-medium ${isActive ? 'text-accent' : 'text-primary-foreground/80'}`
+                }
+                onClick={() => setOpen(false)}
+              >
+                {label}
+              </NavLink>
+            )
+          })}
         </div>
       )}
     </header>
