@@ -215,12 +215,12 @@ export default function Home() {
       </section>
 
       {/* Our Services — dark navy bg */}
-      <section className="section-padding bg-primary">
+      <section className="section-padding bg-muted">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-14">
             <p className="text-accent text-xs font-semibold tracking-[0.25em] uppercase mb-3">What We Do</p>
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-white mb-4">Our Services</h2>
-            <p className="text-white/60 max-w-2xl mx-auto">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4">Our Services</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
               We provide services across the highway and transport project lifecycle, delivered as
               standalone work packages or sub-consultancy arrangements.
             </p>
@@ -247,7 +247,7 @@ export default function Home() {
       </section>
 
       {/* Our Clients */}
-      <section className="section-padding bg-muted">
+      <section className="section-padding bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <p className="text-accent text-xs font-semibold tracking-[0.25em] uppercase mb-3">Who We Serve</p>
